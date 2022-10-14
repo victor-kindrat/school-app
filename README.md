@@ -21,19 +21,19 @@ JS project. In development
 
 2. Install modules with commands:
 
-`
+```
 npm i express
-`
+```
 
-`
+```
 npm i open
-`
+```
 
 3. Start with command:
 
-`
+```
 node app
-`
+```
 
     
 ### I in social medias:
