@@ -1,5 +1,5 @@
 # School app (in development)
-E-diary for schoolers and teacherd 🎨
+E-diary for students and teachers 🎨
 ---
 
 JS project. In development
