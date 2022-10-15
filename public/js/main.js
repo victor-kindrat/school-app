@@ -100,13 +100,13 @@ if (new RegExp('student', 'ig').test(window.location.hash)) {
     $('.loginpage__input_class').css('display', 'none')
 }
 
-$('#loginpage__login').click(function(){
+$('#loginpage__login').click(function () {
     if ($('#login__name').val() && $('#login__password').val()) {
         if (new RegExp('student', 'ig').test(window.location.hash)) {
-            
+
         } else {
             let findedTeacher = {};
-            for(teacher of database.teachers) {
+            for (teacher of database.teachers) {
                 if (teacher.email === $('#login__name').val()) {
                     findedTeacher = teacher;
                 }
@@ -126,3 +126,28 @@ $('#loginpage__login').click(function(){
         alert('Fill all inputs')
     }
 })
+
+if (new RegExp('teacher', 'gi').test(window.location.href)) {
+    $('.teacher__quote').hide(0)
+    $('.teacher__background').hide(0)
+    fetch("https://type.fit/api/quotes")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            block = data[Math.round(Math.random() * 1643)];
+            $('.teacher__quote').text(block.text)
+            $('.teacher__quote').attr('cite', block.author)
+            $('.teacher__quote').show(300)
+            console.log(block);
+        });
+
+    fetch('https:/source.unsplash.com/1920x1080/?teacher')
+        .then(function (data) {
+            $('.teacher__background').css('background', `linear-gradient(0deg, #ffffff70 0%, #ffffff 100%), url("${data.url}") no-repeat center`);
+            $('.teacher__background').css('backgroundSize', 'cover');
+            $('.teacher__background').fadeIn(300)
+
+            console.log(data.url)
+        })
+}

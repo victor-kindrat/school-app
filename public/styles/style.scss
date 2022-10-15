@@ -33,6 +33,7 @@
     flex-direction: column;
 
     .header {
+        z-index: 10;
         width: 100%;
         padding: 50px;
         display: flex;
@@ -46,6 +47,24 @@
         }
     }
 
+    .teacher-header {
+        justify-content: space-around;
+
+        .header__nav {
+            .header__list {
+                display: flex;
+                list-style: none;
+
+                .header__nav-item {
+                    margin: 0 25px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: calc(10px + .5vw);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
     .main {
         width: 100%;
         display: flex;
@@ -56,6 +75,7 @@
         row-gap: 50px;
         padding: 50px;
         padding-top: 100px;
+        z-index: 1;
 
         .main__headline {
             font-family: 'Nunito';
@@ -162,6 +182,45 @@
 
     }
 
+    .teacher {
+        padding: 50px;
+        justify-content: space-around;
+
+        .teacher__btn {
+            padding: 15px 50px;
+            background: #71C9CE;
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .teacher__quote {
+            font-family: 'Nunito', sans-serif;
+            font-size: calc(25px + .5vw);
+            font-weight: 600;
+            text-align: center;
+            font-style: italic;
+
+            &::before{
+                content: '"';
+            }
+            &::after{
+                content: '"';
+            }
+        }
+    }
+
+    .teacher__background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        z-index: 0;
+    }
+
     .footer {
         display: flex;
         justify-content: space-between;
@@ -228,6 +287,7 @@
                 .footer__input {
                     width: 100%;
                     @extend %inputStyles;
+                    padding-right: 75px;
                 }
 
                 .footer__button {
