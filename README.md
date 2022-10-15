@@ -11,8 +11,8 @@ JS project. In development
 - SCSS
 ---
 
-### You would look preview here (in dev):
-![preview](url "preview")
+### You can look preview here:
+![preview](https://files.fm/thumb_show.php?i=y6z5zug3k "preview")
 
 ---
 ### How to install:
