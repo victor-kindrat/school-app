@@ -20,6 +20,10 @@ app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/public/pages/login.html');
 })
 
+app.get('/teacher', (req, res) => {
+    res.sendFile(__dirname + '/public/pages/dashboard.html');
+})
+
 app.post('/', (req, res) => {
     let data = req.body.message;
     let file = fs.readFileSync('messages.txt') || '';
