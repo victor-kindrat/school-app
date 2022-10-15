@@ -16,6 +16,10 @@ app.get('/messagesended', (req, res) => {
     res.sendFile(__dirname + '/public/pages/messagesended.html');
 })
 
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/public/pages/login.html');
+})
+
 app.post('/', (req, res) => {
     let data = req.body.message;
     let file = fs.readFileSync('messages.txt') || '';
@@ -25,5 +29,5 @@ app.post('/', (req, res) => {
 
 app.listen(port, () => {
     console.log(`App listen on port ${port}`);
-    open(`http://localhost:${port}`);
+    // open(`http://localhost:${port}`);
 })
