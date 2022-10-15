@@ -36,8 +36,13 @@ node app
 ```
 
 ### Test accounts:
-Teacher: yaroslavivanov@gmail.com: yaroslav1234
-Student: in development
+###### Teacher: 
+
+yaroslavivanov@gmail.com: yaroslav1234
+
+###### Student: 
+
+in development
     
 ### I in social medias:
 ---
