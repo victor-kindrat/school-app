@@ -30,7 +30,7 @@ let teachersdb = [{
         password: 'kateryna1234',
         id: '003'
     },
-];
+]
 
 let classesdb = [{
         name: '1A',
