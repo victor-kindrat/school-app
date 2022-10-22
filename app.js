@@ -30,6 +30,15 @@ app.get('/classes', (req, res) => {
     res.sendFile(__dirname + '/public/pages/classess.html');
 })
 
+app.get('/class', (req, res) => {
+    let className = req.query.class;
+    if (className && className.length > 0) {
+        res.sendFile(__dirname + '/public/pages/class.html');
+    } else {
+        res.sendStatus(404);
+    }
+})
+
 app.post('/', (req, res) => {
     let data = req.body.message;
     let file = fs.readFileSync('messages.txt') || '';

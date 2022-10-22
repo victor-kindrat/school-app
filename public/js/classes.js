@@ -1,4 +1,5 @@
 let myClasses = [];
+let currentClass = sessionStorage.getItem('class') || '';
 
 for (classItem of classesdb) {
     for (teacher of classItem.teachers) {
@@ -38,10 +39,10 @@ function generateIconPlaceholder(name, surname) {
     }
 }
 
-function classItemConstructor(className) {
+function classItemConstructor(className, id) {
     let avatar = generateIconPlaceholder(className, ' ');
     return `
-    <div class="classes__item" style="background-color: ${avatar.color}">
+    <div class="classes__item classes__item_${id}" style="background-color: ${avatar.color}">
         <h2 class="classes__name" style="color: ${avatar.textColor}">${className}</h2>
     </div>
     `
@@ -50,6 +51,12 @@ function classItemConstructor(className) {
 if (myClasses.length >= 1) {
     $('.classes__container').html('')
     for (classItem of myClasses) {
-        $('.classes__container').append(classItemConstructor(classItem.name))
+        $('.classes__container').append(classItemConstructor(classItem.name, myClasses.indexOf(classItem)))
+        $('.classes__item_' + myClasses.indexOf(classItem)).click(function() {
+            let text = $(this).text().trim();
+            currentClass = text;
+            sessionStorage.setItem('currentClass', text);
+            window.location = `http://localhost:8000/class/?class=${currentClass}`
+        })
     }
 }
