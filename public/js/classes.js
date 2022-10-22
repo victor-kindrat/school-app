@@ -1,5 +1,5 @@
 let myClasses = [];
-let currentClass = sessionStorage.getItem('class') || '';
+let currentClass = sessionStorage.getItem('currrentClass') || '';
 
 for (classItem of classesdb) {
     for (teacher of classItem.teachers) {
@@ -59,4 +59,10 @@ if (myClasses.length >= 1) {
             window.location = `http://localhost:8000/class/?class=${currentClass}`
         })
     }
+}
+
+if (role === 'teacher' && new RegExp(sessionStorage.getItem('currentClass'), 'gi').test(window.location.href)) {
+    console.log (true)
+} else {
+    $('.class').html('You are so suspicious 🤨 <br> Login and retry')
 }
