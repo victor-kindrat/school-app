@@ -1,8 +1,8 @@
 let students = [];
 let dates = [{
-    title: "Name",
+    title: "Student's name",
     field: "name",
-    width: 150,
+    width: 200,
     frozen:true
 }];
 currentClass = sessionStorage.getItem('currentClass');
@@ -86,5 +86,5 @@ console.log(dates)
 //Build Tabulator
 let table = new Tabulator(".class__table", {
     data: students,
-    columns: dates
+    columns: dates,
 });

@@ -269,6 +269,99 @@
         }
     }
 
+    .class {
+        padding: 50px 25px;
+        font-family: 'Montserrat', sans-serif;
+
+        .class__headline {
+            font-family: 'Nunito', sans-serif;
+            font-size: calc(30px + .5vw);
+            font-weight: 900;
+            color: #141414;
+        }
+
+        .class__table {
+            max-width: 100%;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 0 15px #14141430;
+
+            /* width */
+            ::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: #888;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+            .tabulator-row {
+                background: #f1f1f1;
+                border-bottom: 1px solid #14141430;
+            }
+
+            .tabulator-row:last-child {
+                border: none;
+            }
+
+            .tabulator-header {
+                font-family: 'Nunito', sans-serif;
+                font-weight: 700;
+                font-size: calc(12px + .5vw);
+                color: #FFFFFF;
+                border-bottom: 1px solid #14141430;
+                
+                .tabulator-col-content {
+                    background: #71C9CE;
+                }
+
+                .tabulator-cell {
+                    border: #14141430;
+                }
+
+                .tabulator-col-title {
+                    padding-left: 10px;
+                }
+            }
+            .tabulator-arrow{
+                display: none;
+            }
+
+            .tabulator-cell {
+                border-color: #14141430;
+            }
+
+            .tabulator-col-resize-handle {
+                opacity: 0;
+            }
+
+            .tabulator-cell.tabulator-frozen.tabulator-frozen-left {
+                background-color: #71C9CE;
+                color: #ffffff;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 700;
+                font-size: calc(10px + .5vw);
+                padding-left: 15px;
+                border-bottom: 1px solid #14141430;
+            }
+
+            .tabulator-cell.tabulator-frozen.tabulator-frozen-left:last-child {
+                border: none;
+            }
+        }
+    }
+
     .footer {
         display: flex;
         justify-content: space-between;
