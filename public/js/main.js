@@ -40,22 +40,28 @@ let classesdb = [{
                 surname: 'Bietrix',
                 email: 'johnbietrix@gmail.com',
                 password: 'john1234',
-                marks: [{
-                    subject: 'Math',
-                    date: '15.10.2022',
-                    count: 10
-                }]
+                marks: []
             },
             {
                 name: 'Ivan',
                 surname: 'Petrov',
                 email: 'johnbietrix@gmail.com',
                 password: 'john1234',
-                marks: [{
-                    subject: 'UA language',
-                    date: '15.10.2022',
-                    count: 8
-                }]
+                marks: []
+            },
+            {
+                name: 'Vitaliy',
+                surname: 'Seven',
+                email: 'vdeven@gmail.com',
+                password: 'john1234',
+                marks: []
+            },
+            {
+                name: 'Daimon',
+                surname: 'Duck',
+                email: 'dduck@gmail.com',
+                password: 'john1234',
+                marks: []
             }
         ],
         teachers: ['002', '001'],

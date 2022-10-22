@@ -10,6 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
         integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- tables lib  -->
+    <link href="https://unpkg.com/tabulator-tables@5.4.2/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.2/dist/js/tabulator.min.js"></script>
     <!-- styles  -->
     <link rel="stylesheet" href="../styles/style.css">
     <!-- favicon  -->
@@ -36,7 +39,8 @@
             </nav>
         </header>
         <main class="main class">
-            
+            <h2 class="class__headline">1-A</h2>
+            <div class="class__table" style="max-width: 100%"></div>
         </main>
         <footer class="footer">
             <div class="footer__info">
@@ -60,6 +64,7 @@
     </div>
     <script src="../js/main.js"></script>
     <script src="../js/classes.js"></script>
+    <script src="../js/tables.js"></script>
     <script>
         if (role.length === 0) {
             window.location.href = 'http://localhost:8000/'
