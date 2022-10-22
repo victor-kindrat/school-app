@@ -1,85 +1,79 @@
 let userPosition = 'none';
+let loginedId = localStorage.getItem('loginedId') || '';
+let role = localStorage.getItem('role') || '';
+console.log(role);
 
-let database = {
-    teachers: [{
-            name: 'Galyna',
-            nameByFather: 'Petriyivna',
-            surname: 'Shevchenko',
-            subject: 'Math',
-            email: 'shevchenkogalyna@gmail.com',
-            password: 'galyna1234',
-            id: '001'
-        },
-        {
-            name: 'Yaroslav',
-            nameByFather: 'Ivanovych',
-            surname: 'Ivanov',
-            subject: 'UA language',
-            email: 'yaroslavivanov@gmail.com',
-            password: 'yaroslav1234',
-            id: '002'
-        },
-        {
-            name: 'Kateryna',
-            nameByFather: 'Romanivna',
-            surname: 'Franko',
-            subject: 'Biology',
-            email: 'frankok@gmail.com',
-            password: 'kateryna1234',
-            id: '003'
-        },
-    ],
-    classes: [{
-            name: '1A',
-            classTeacher: {
-                name: 'Galyna',
-                nameByFather: 'Petriyivna',
-                surname: 'Shevchenko',
+let teachersdb = [{
+        name: 'Galyna',
+        nameByFather: 'Petriyivna',
+        surname: 'Shevchenko',
+        subject: 'Math',
+        email: 'shevchenkogalyna@gmail.com',
+        password: 'galyna1234',
+        id: '001'
+    },
+    {
+        name: 'Yaroslav',
+        nameByFather: 'Ivanovych',
+        surname: 'Ivanov',
+        subject: 'UA language',
+        email: 'yaroslavivanov@gmail.com',
+        password: 'yaroslav1234',
+        id: '002'
+    },
+    {
+        name: 'Kateryna',
+        nameByFather: 'Romanivna',
+        surname: 'Franko',
+        subject: 'Biology',
+        email: 'frankok@gmail.com',
+        password: 'kateryna1234',
+        id: '003'
+    },
+];
+
+let classesdb = [{
+        name: '1A',
+        classTeacher: '003',
+        students: [{
+                name: 'John',
+                surname: 'Bietrix',
+                email: 'johnbietrix@gmail.com',
+                password: 'john1234',
+                marks: [{
+                    subject: 'Math',
+                    date: '15.10.2022',
+                    count: 10
+                }]
             },
-            students: [{
-                    name: 'John',
-                    surname: 'Bietrix',
-                    email: 'johnbietrix@gmail.com',
-                    password: 'john1234',
-                    marks: [{
-                        subject: 'Math',
-                        date: '15.10.2022',
-                        count: 10
-                    }]
-                },
-                {
-                    name: 'Ivan',
-                    surname: 'Petrov',
-                    email: 'johnbietrix@gmail.com',
-                    password: 'john1234',
-                    marks: [{
-                        subject: 'UA language',
-                        date: '15.10.2022',
-                        count: 8
-                    }]
-                }
-            ],
-        },
-        {
-            name: '1B',
-            classTeacher: {
-                name: 'Yaroslav',
-                nameByFather: 'Ivanovych',
-                surname: 'Ivanov'
-            },
-            students: [],
-        },
-        {
-            name: '1C',
-            classTeacher: {
-                name: 'Kateryna',
-                nameByFather: 'Romanivna',
-                surname: 'Franko',
-            },
-            students: [],
-        },
-    ]
-}
+            {
+                name: 'Ivan',
+                surname: 'Petrov',
+                email: 'johnbietrix@gmail.com',
+                password: 'john1234',
+                marks: [{
+                    subject: 'UA language',
+                    date: '15.10.2022',
+                    count: 8
+                }]
+            }
+        ],
+        teachers: ['002', '001'],
+    },
+    {
+        name: '1B',
+        classTeacher: '002',
+        students: [],
+        teachers: ['001', '002', '003']
+    },
+    {
+        name: '1C',
+        classTeacher: '001',
+        students: [],
+        teachers: ['001']
+    },
+]
+
 
 $('.main__button').click(function () {
     userPosition = $(this).attr('id').slice($(this).attr('id').lastIndexOf('_') + 1, $(this).attr('id').length);
@@ -103,10 +97,11 @@ if (new RegExp('student', 'ig').test(window.location.hash)) {
 $('#loginpage__login').click(function () {
     if ($('#login__name').val() && $('#login__password').val()) {
         if (new RegExp('student', 'ig').test(window.location.hash)) {
-
+            role = 'student';
+            localStorage.setItem('role', role)
         } else {
             let findedTeacher = {};
-            for (teacher of database.teachers) {
+            for (teacher of teachersdb) {
                 if (teacher.email === $('#login__name').val()) {
                     findedTeacher = teacher;
                 }
@@ -114,7 +109,11 @@ $('#loginpage__login').click(function () {
             if (findedTeacher.name) {
                 if (findedTeacher.password === $('#login__password').val()) {
                     alert('success');
-                    window.location = `http://localhost:8000/teacher/#${findedTeacher.id}`;
+                    role = 'teacher';
+                    localStorage.setItem('role', role);
+                    loginedId = findedTeacher.id;
+                    localStorage.setItem('loginedId', loginedId)
+                    window.location = `http://localhost:8000/teacher/`;
                 } else {
                     alert('incorrect password');
                 }
@@ -139,7 +138,6 @@ if (new RegExp('teacher', 'gi').test(window.location.href)) {
             $('.teacher__quote').text(block.text)
             $('.teacher__quote').attr('cite', block.author)
             $('.teacher__quote').show(300)
-            console.log(block);
         });
 
     fetch('https:/source.unsplash.com/1920x1080/?teacher')
@@ -147,7 +145,10 @@ if (new RegExp('teacher', 'gi').test(window.location.href)) {
             $('.teacher__background').css('background', `linear-gradient(0deg, #ffffff70 0%, #ffffff 100%), url("${data.url}") no-repeat center`);
             $('.teacher__background').css('backgroundSize', 'cover');
             $('.teacher__background').fadeIn(300)
-
-            console.log(data.url)
         })
 }
+
+$('.header__nav-item').click(function () {
+    let page = $(this).attr('id').substring($(this).attr('id').lastIndexOf('_') + 1)
+    window.location = `http://localhost:8000/${page}`
+})
