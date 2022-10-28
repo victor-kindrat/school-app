@@ -91,7 +91,7 @@ $('#loginpage__login').click(function () {
 })
 
 function openLogin(position) {
-    window.location = `http://localhost:8000/login/#${position}`
+    window.location = `https://schoolapp123456.herokuapp.com/:8000/login/#${position}`
 }
 
 if (new RegExp('student', 'ig').test(window.location.hash)) {
@@ -119,7 +119,7 @@ $('#loginpage__login').click(function () {
                     localStorage.setItem('role', role);
                     loginedId = findedTeacher.id;
                     localStorage.setItem('loginedId', loginedId)
-                    window.location = `http://localhost:8000/teacher/`;
+                    window.location = `https://schoolapp123456.herokuapp.com/:8000/teacher/`;
                 } else {
                     alert('incorrect password');
                 }
@@ -156,5 +156,5 @@ if (new RegExp('teacher', 'gi').test(window.location.href)) {
 
 $('.header__nav-item').click(function () {
     let page = $(this).attr('id').substring($(this).attr('id').lastIndexOf('_') + 1)
-    window.location = `http://localhost:8000/${page}`
+    window.location = `https://schoolapp123456.herokuapp.com/:8000/${page}`
 })
