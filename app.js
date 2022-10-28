@@ -44,10 +44,10 @@ app.post('/', (req, res) => {
     let data = req.body.message;
     let file = fs.readFileSync('messages.txt') || '';
     fs.writeFileSync('messages.txt', `${file}\n${data}`);
-    res.redirect(`https://schoolapp123456.herokuapp.com/:${port}/messagesended`) / messagesended
+    res.redirect(`http:/localhost:8000/:${port}/messagesended`) / messagesended
 })
 
 app.listen(port, () => {
     console.log(`App listen on port ${port}`);
-    // open(`https://schoolapp123456.herokuapp.com/:${port}`);
+    // open(`http:/localhost:8000/:${port}`);
 })

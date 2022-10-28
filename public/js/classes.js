@@ -56,7 +56,7 @@ if (myClasses.length >= 1) {
             let text = $(this).text().trim();
             currentClass = text;
             sessionStorage.setItem('currentClass', text);
-            window.location = `https://schoolapp123456.herokuapp.com/:8000/class/?class=${currentClass}`
+            window.location = `http:/localhost:8000/:8000/class/?class=${currentClass}`
         })
     }
 }
