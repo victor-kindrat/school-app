@@ -1,4 +1,4 @@
-const port = 8000;
+const port = process.env.PORT || 5000;
 const express = require('express');
 const open = require('open');
 const fs = require('fs');
